@@ -1,0 +1,335 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 15, 20, 0.4);
+  backdrop-filter: blur(8px);
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.closeBtn {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.closeBtn:hover { opacity: 1; }
+
+.postcard {
+  background: #FAF7F0;
+  border-radius: 4px;
+  padding: 32px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+}
+.postcard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.04"/></svg>');
+  pointer-events: none;
+}
+
+.pcHeader {
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding-bottom: 12px;
+}
+html[data-lang="np"] .pcHeader { font-family: var(--font-deva-serif); }
+
+.pledgeText {
+  margin: 24px 0;
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  font-style: italic;
+  text-align: center;
+  padding: 0 10px;
+}
+html[data-lang="np"] .pledgeText {
+  font-family: var(--font-deva-serif);
+  font-style: normal;
+}
+.pledgeText strong {
+  font-weight: 600;
+  color: var(--ink-deep);
+  border-bottom: 1px dashed rgba(0,0,0,0.3);
+}
+
+.breakdown {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.part {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.pLabel {
+  width: 80px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+.pBar {
+  flex: 1;
+  height: 6px;
+  background: rgba(0,0,0,0.05);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.pBar div {
+  height: 100%;
+  border-radius: 3px;
+}
+
+.signatureArea {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 10px;
+}
+
+.signatureLine {
+  position: relative;
+  border-bottom: 1px solid var(--ink);
+  padding: 0 20px 5px;
+  min-width: 180px;
+  text-align: center;
+}
+
+.stamp {
+  position: absolute;
+  top: -10px;
+  left: -20px;
+  color: #c73e3e;
+  border: 2px solid #c73e3e;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  transform: rotate(-15deg);
+  opacity: 0.8;
+  font-family: var(--font-sans);
+}
+
+.signName {
+  font-family: 'Brush Script MT', 'cursive', var(--font-serif);
+  font-size: 28px;
+  color: var(--ink-deep);
+  line-height: 1;
+}
+
+.signDate {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin-top: 6px;
+  letter-spacing: 1px;
+}
+
+/* Prayer Flags at bottom */
+.prayerFlags {
+  display: flex;
+  width: 100%;
+  height: 24px;
+  margin-top: 8px;
+  gap: 4px;
+}
+.flag {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.1em;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+html[data-lang="np"] .flag { font-family: var(--font-deva-sans); font-weight: 600; letter-spacing: 0; }
+
+/* New Additions for Summary vs Pledge View */
+.summaryView, .pledgeView {
+  animation: fadeIn 0.4s ease;
+}
+
+.bigTotal {
+  font-size: 48px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--ink-deep);
+  margin-bottom: 24px;
+}
+.bigTotal span {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  display: block;
+  margin-top: -5px;
+}
+
+.feedbackLow, .feedbackHigh {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.feedbackLow p, .feedbackHigh p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink);
+  margin-top: 10px;
+}
+
+.balloons {
+  font-size: 32px;
+  margin-bottom: 10px;
+  animation: floatBalloons 3s ease-in-out infinite alternate;
+}
+
+@keyframes floatBalloons {
+  from { transform: translateY(5px); }
+  to { transform: translateY(-5px); }
+}
+
+.graffiti {
+  font-family: 'Brush Script MT', 'cursive', var(--font-serif);
+  font-size: 36px;
+  color: #D85A30;
+  transform: rotate(-5deg);
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+  margin-bottom: 5px;
+}
+
+.warningIcon {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.highText {
+  font-weight: 700;
+  font-size: 20px;
+  color: #c73e3e;
+}
+
+.treeSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(15, 110, 86, 0.1);
+  border: 1px dashed rgba(15, 110, 86, 0.3);
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.treeIcon {
+  font-size: 36px;
+}
+
+.treeSection p {
+  font-size: 14px;
+  color: var(--ink-deep);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.treeSection strong {
+  font-size: 18px;
+  color: #0F6E56;
+}
+
+.pledgeBtn {
+  width: 100%;
+  padding: 16px;
+  background: var(--ink-deep);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+.pledgeBtn:hover {
+  transform: translateY(-2px);
+  background: var(--ink);
+}
+
+.shareRow {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.shareBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.shareBtn:hover {
+  background: rgba(0,0,0,0.1);
+}
+.shareBtn svg {
+  width: 16px;
+  height: 16px;
+}

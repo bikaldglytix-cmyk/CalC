@@ -1,0 +1,249 @@
+{
+  "questions": {
+    "A1": {
+      "options": {
+        "firewood": { "id": "firewood", "isRegionDependent": true, "values": { "urban": 0, "semi_urban": 450, "rural_hills_terai": 1000, "rural_highland_mountain": 1450 } },
+        "lpg": { "id": "lpg", "value": 2400 },
+        "biogas": { "id": "biogas", "value": 50 },
+        "induction": { "id": "induction", "value": 20 },
+        "kerosene": { "id": "kerosene", "value": 1800 },
+        "mixed": { "id": "mixed", "value": 5000 }
+      }
+    },
+    "A2": {
+      "isMultiplierFor": "A1_firewood",
+      "options": {
+        "traditional": { "id": "traditional", "multiplier": 1.0 },
+        "improved": { "id": "improved", "multiplier": 0.5 },
+        "rocket": { "id": "rocket", "multiplier": 0.4 },
+        "lpg_electric": { "id": "lpg_electric", "multiplier": 1.0 }
+      }
+    },
+    "A3": {
+      "options": {
+        "0": { "id": "0", "value": 0 },
+        "0_5": { "id": "0_5", "value": 255 },
+        "1": { "id": "1", "value": 509 },
+        "2": { "id": "2", "value": 1018 },
+        "3plus": { "id": "3plus", "value": 1527 }
+      }
+    },
+    "A4": {
+      "options": {
+        "never": { "id": "never", "value": 0 },
+        "occasionally": { "id": "occasionally", "value": 100 },
+        "regularly": { "id": "regularly", "value": 600 },
+        "frequently": { "id": "frequently", "value": 1200 }
+      }
+    },
+    "A5": {
+      "options": {
+        "under2": { "id": "under2", "value": 5 },
+        "2to6": { "id": "2to6", "value": 15 },
+        "6to12": { "id": "6to12", "value": 30 },
+        "12plus": { "id": "12plus", "value": 50 }
+      }
+    },
+    "A6": {
+      "isRegionDependent": true,
+      "options": {
+        "none": { "id": "none", "values": { "terai": 0, "hilly": 0, "mountain": 0 } },
+        "electric": { "id": "electric", "values": { "terai": 5, "hilly": 10, "mountain": 20 } },
+        "firewood": { "id": "firewood", "values": { "terai": 875, "hilly": 1750, "mountain": 3500 } },
+        "coal": { "id": "coal", "values": { "terai": 1125, "hilly": 2250, "mountain": 4500 } }
+      }
+    },
+    "B1": {
+      "options": {
+        "walking": { "id": "walking", "value": 0 },
+        "bicycle": { "id": "bicycle", "value": 0 },
+        "electric": { "id": "electric", "value": 5 },
+        "public": { "id": "public", "value": 275 },
+        "own": { "id": "own", "value": 0 }
+      }
+    },
+    "B2": {
+      "options": {
+        "none": { "id": "none", "value": 0 },
+        "moto_under50": { "id": "moto_under50", "value": 700 },
+        "moto_50to150": { "id": "moto_50to150", "value": 1700 },
+        "car_under100": { "id": "car_under100", "value": 2760 },
+        "car_100to300": { "id": "car_100to300", "value": 7000 }
+      }
+    },
+    "B3": {
+      "options": {
+        "none": { "id": "none", "value": 0 },
+        "1to2": { "id": "1to2", "value": 140 },
+        "3to5": { "id": "3to5", "value": 400 },
+        "6plus": { "id": "6plus", "value": 600 }
+      }
+    },
+    "B4": {
+      "options": {
+        "none": { "id": "none", "value": 0 },
+        "1short": { "id": "1short", "value": 250 },
+        "1medium": { "id": "1medium", "value": 550 },
+        "1long": { "id": "1long", "value": 1500 },
+        "2pluslong": { "id": "2pluslong", "value": 3000 }
+      }
+    },
+    "B5": {
+      "options": {
+        "rarely": { "id": "rarely", "value": 30 },
+        "monthly": { "id": "monthly", "value": 100 },
+        "twicemonthly": { "id": "twicemonthly", "value": 200 }
+      }
+    },
+    "C1": {
+      "options": {
+        "veg": { "id": "veg", "value": 450 },
+        "mostlyveg": { "id": "mostlyveg", "value": 650 },
+        "regularmeat": { "id": "regularmeat", "value": 950 },
+        "frequentred": { "id": "frequentred", "value": 1500 }
+      }
+    },
+    "C2": {
+      "options": {
+        "never": { "id": "never", "value": 0 },
+        "occasionally": { "id": "occasionally", "value": 50 },
+        "monthly": { "id": "monthly", "value": 120 },
+        "weekly": { "id": "weekly", "value": 500 }
+      }
+    },
+    "C3": {
+      "options": {
+        "almostnone": { "id": "almostnone", "value": 20 },
+        "some": { "id": "some", "value": 150 },
+        "moderate": { "id": "moderate", "value": 300 },
+        "alot": { "id": "alot", "value": 500 }
+      }
+    },
+    "C4": {
+      "isMultiplierForDomain": "C",
+      "options": {
+        "home": { "id": "home", "multiplier": 0.5 },
+        "local": { "id": "local", "multiplier": 1.0 },
+        "supermarket": { "id": "supermarket", "multiplier": 1.5 },
+        "packaged": { "id": "packaged", "multiplier": 2.0 }
+      }
+    },
+    "C5": {
+      "options": {
+        "no": { "id": "no", "value": 0 },
+        "small": { "id": "small", "value": 50 },
+        "medium": { "id": "medium", "value": 250 },
+        "large": { "id": "large", "value": 600 }
+      }
+    },
+    "C6": {
+      "options": {
+        "no": { "id": "no", "value": 0 },
+        "1to2goats": { "id": "1to2goats", "value": 250 },
+        "1cow": { "id": "1cow", "value": 1500 },
+        "2pluscow": { "id": "2pluscow", "value": 3000 },
+        "mixed": { "id": "mixed", "value": 5000 }
+      }
+    },
+    "D1": {
+      "options": {
+        "1to5": { "id": "1to5", "value": 50 },
+        "6to15": { "id": "6to15", "value": 120 },
+        "16to30": { "id": "16to30", "value": 250 },
+        "30plus": { "id": "30plus", "value": 400 }
+      }
+    },
+    "D2": {
+      "isMultiplierForQuestions": ["D1", "D3"],
+      "options": {
+        "often": { "id": "often", "multiplier": 0.4 },
+        "sometimes": { "id": "sometimes", "multiplier": 0.7 },
+        "rarely": { "id": "rarely", "multiplier": 1.0 },
+        "never": { "id": "never", "multiplier": 1.0 }
+      }
+    },
+    "D3": {
+      "options": {
+        "rarely": { "id": "rarely", "value": 30 },
+        "every3": { "id": "every3", "value": 70 },
+        "every2": { "id": "every2", "value": 100 },
+        "every1": { "id": "every1", "value": 200 }
+      }
+    },
+    "D4": {
+      "options": {
+        "verylittle": { "id": "verylittle", "value": 10 },
+        "some": { "id": "some", "value": 40 },
+        "moderate": { "id": "moderate", "value": 80 },
+        "alot": { "id": "alot", "value": 130 }
+      }
+    },
+    "E1": {
+      "options": {
+        "compost": { "id": "compost", "value": 20 },
+        "municipal": { "id": "municipal", "value": 80 },
+        "burn": { "id": "burn", "value": 200 },
+        "dump": { "id": "dump", "value": 100 }
+      }
+    },
+    "E2": {
+      "options": {
+        "never": { "id": "never", "value": 0 },
+        "occasionally": { "id": "occasionally", "value": 50 },
+        "regularly": { "id": "regularly", "value": 150 }
+      }
+    },
+    "E3": {
+      "options": {
+        "flush": { "id": "flush", "value": 30 },
+        "septic": { "id": "septic", "value": 80 },
+        "pit": { "id": "pit", "value": 40 },
+        "open": { "id": "open", "value": 20 }
+      }
+    },
+    "E4": {
+      "options": {
+        "bucket": { "id": "bucket", "value": 2 },
+        "short": { "id": "short", "value": 5 },
+        "medium": { "id": "medium", "value": 10 },
+        "long": { "id": "long", "value": 15 }
+      }
+    },
+    "F1": {
+      "options": {
+        "under30": { "id": "under30", "value": 7 },
+        "1to2": { "id": "1to2", "value": 13 },
+        "3to4": { "id": "3to4", "value": 26 },
+        "5plus": { "id": "5plus", "value": 52 }
+      }
+    },
+    "F2": {
+      "options": {
+        "never": { "id": "never", "value": 0 },
+        "occasionally": { "id": "occasionally", "value": 0.5 },
+        "regularly": { "id": "regularly", "value": 3 },
+        "heavy": { "id": "heavy", "value": 10 }
+      }
+    },
+    "F3": {
+      "options": {
+        "1to2": { "id": "1to2", "value": 20 },
+        "3to4": { "id": "3to4", "value": 40 },
+        "5to7": { "id": "5to7", "value": 70 },
+        "8plus": { "id": "8plus", "value": 100 }
+      }
+    },
+    "F4": {
+      "options": {
+        "under2": { "id": "under2", "value": 1.4 },
+        "2to10": { "id": "2to10", "value": 7 },
+        "10to30": { "id": "10to30", "value": 22 },
+        "30plus": { "id": "30plus", "value": 50 }
+      }
+    }
+  },
+  "baselines": {
+    "nepalAverage": 600,
+    "globalAverage": 4760
+  }
+}

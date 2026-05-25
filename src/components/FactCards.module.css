@@ -1,0 +1,46 @@
+.factFloat {
+  position: fixed;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  z-index: 20;
+  pointer-events: none;
+  perspective: 800px;
+}
+
+@media (max-width: 900px) {
+  .factFloat { display: none; }
+}
+
+.factInner {
+  background: rgba(250, 247, 240, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--hairline);
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: factIn 1s var(--ease) forwards;
+}
+
+@keyframes factIn {
+  from { opacity: 0; transform: translateX(40px) rotateY(-10deg); }
+  to { opacity: 1; transform: translateX(0) rotateY(0); }
+}
+
+.ico {
+  width: 24px;
+  height: 24px;
+  color: var(--teal);
+}
+
+.factInner p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
