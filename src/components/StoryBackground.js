@@ -117,28 +117,153 @@ const getChapterSilhouette = (chapter) => {
     case 6: // Waste
       return (
         <svg viewBox="0 0 1000 300" preserveAspectRatio="xMidYMax meet" className={styles.chapterSvg}>
-          <path d="M 0 280 Q 500 270 1000 280 L 1000 300 L 0 300 Z" fill="currentColor" />
-          <rect x="250" y="230" width="30" height="50" rx="3" fill="currentColor" />
-          <rect x="245" y="225" width="40" height="5" rx="2" fill="currentColor" />
-          <circle cx="265" cy="255" r="6" fill="var(--paper)" opacity="0.2" />
-          <rect x="290" y="230" width="30" height="50" rx="3" fill="currentColor" />
-          <rect x="285" y="225" width="40" height="5" rx="2" fill="currentColor" />
-          <path d="M 400 280 L 400 250" stroke="currentColor" strokeWidth="4" />
-          <circle cx="400" cy="240" r="15" fill="currentColor" />
+          {/* Ground Line */}
+          <path d="M 0 270 Q 500 290 1000 270 L 1000 300 L 0 300 Z" fill="currentColor" opacity="0.9" />
+          
+          {/* Left Side: Recycling Station & Compost */}
+          <g transform="translate(50, 0)">
+            {/* Bin 1 (Paper) */}
+            <path d="M 45 230 L 85 230 L 80 220 L 50 220 Z" fill="currentColor" opacity="0.9" />
+            <rect x="50" y="230" width="30" height="45" rx="2" fill="currentColor" opacity="0.85" />
+            <rect x="55" y="240" width="20" height="2" fill="var(--paper)" opacity="0.2" />
+            
+            {/* Bin 2 (Plastic) */}
+            <path d="M 95 230 L 135 230 L 130 220 L 100 220 Z" fill="currentColor" opacity="0.9" />
+            <rect x="100" y="230" width="30" height="45" rx="2" fill="currentColor" opacity="0.85" />
+            <rect x="105" y="240" width="20" height="2" fill="var(--paper)" opacity="0.2" />
+
+            {/* Bin 3 (Glass) */}
+            <path d="M 145 230 L 185 230 L 180 220 L 150 220 Z" fill="currentColor" opacity="0.9" />
+            <rect x="150" y="230" width="30" height="45" rx="2" fill="currentColor" opacity="0.85" />
+            <rect x="155" y="240" width="20" height="2" fill="var(--paper)" opacity="0.2" />
+
+            {/* Wooden Compost Bin */}
+            <rect x="210" y="210" width="60" height="65" rx="3" fill="currentColor" opacity="0.9" />
+            {/* Slat Cutouts */}
+            <rect x="210" y="225" width="60" height="4" fill="var(--paper)" opacity="0.3" />
+            <rect x="210" y="240" width="60" height="4" fill="var(--paper)" opacity="0.3" />
+            <rect x="210" y="255" width="60" height="4" fill="var(--paper)" opacity="0.3" />
+            {/* Compost Pile sticking out */}
+            <path d="M 220 210 Q 240 190 260 210" fill="currentColor" opacity="0.8" />
+          </g>
+
+          {/* Right Side: Garbage/Recycling Truck */}
+          <g transform="translate(680, 160)">
+            {/* Truck Body (Hopper) */}
+            <path d="M 0 10 L 130 10 L 130 100 L 0 100 Z" fill="currentColor" opacity="0.9" />
+            <path d="M -10 20 L 0 10 L 0 100 L -10 90 Z" fill="currentColor" opacity="0.8" />
+            
+            {/* Truck Cab */}
+            <path d="M 130 40 L 180 40 Q 195 40 200 65 L 205 100 L 130 100 Z" fill="currentColor" opacity="0.95" />
+            
+            {/* Cab Window cutout */}
+            <polygon points="140,45 175,45 185,65 140,65" fill="var(--paper)" opacity="0.4" />
+            
+            {/* Headlight */}
+            <polygon points="205,80 300,110 300,50" fill="var(--paper)" opacity="0.1" />
+            <circle cx="203" cy="80" r="3" fill="var(--paper)" opacity="0.7" />
+
+            {/* Recycling Logo/Stripes on Body */}
+            <path d="M 30 30 L 100 30 L 100 80 L 30 80 Z" fill="none" stroke="var(--paper)" strokeWidth="4" strokeDasharray="15 5" opacity="0.2" />
+            <circle cx="65" cy="55" r="15" fill="none" stroke="var(--paper)" strokeWidth="3" opacity="0.2" />
+
+            {/* Wheels */}
+            <circle cx="35" cy="100" r="14" fill="var(--paper)" opacity="0.2" />
+            <circle cx="35" cy="100" r="8" fill="currentColor" />
+            <circle cx="165" cy="100" r="14" fill="var(--paper)" opacity="0.2" />
+            <circle cx="165" cy="100" r="8" fill="currentColor" />
+            
+            {/* Exhaust Pipe & Smoke */}
+            <path d="M 125 10 L 125 -10" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+            <circle cx="125" cy="-20" r="5" fill="var(--paper)" opacity="0.2" filter="blur(2px)" />
+            <circle cx="115" cy="-30" r="8" fill="var(--paper)" opacity="0.15" filter="blur(3px)" />
+            <circle cx="130" cy="-40" r="12" fill="var(--paper)" opacity="0.1" filter="blur(4px)" />
+          </g>
         </svg>
       );
     case 7: // Digital
       return (
         <svg viewBox="0 0 1000 300" preserveAspectRatio="xMidYMax meet" className={styles.chapterSvg}>
-          <path d="M 700 300 Q 850 200 1000 300 Z" fill="currentColor" opacity="0.8" />
-          <path d="M 840 240 L 860 240 L 850 80 Z" fill="currentColor" />
-          <line x1="845" y1="200" x2="855" y2="200" stroke="var(--paper)" opacity="0.1" strokeWidth="2" />
-          <line x1="847" y1="160" x2="853" y2="160" stroke="var(--paper)" opacity="0.1" strokeWidth="2" />
-          <line x1="849" y1="120" x2="851" y2="120" stroke="var(--paper)" opacity="0.1" strokeWidth="2" />
-          <circle cx="850" cy="100" r="8" fill="currentColor" />
-          <line x1="850" y1="100" x2="830" y2="90" stroke="currentColor" strokeWidth="2" />
-          <circle cx="850" cy="140" r="6" fill="currentColor" />
-          <line x1="850" y1="140" x2="870" y2="130" stroke="currentColor" strokeWidth="2" />
+          {/* Defs for Glow Filter */}
+          <defs>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+            <filter id="softGlow">
+              <feGaussianBlur stdDeviation="15" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+
+          {/* Ground Line */}
+          <path d="M 0 280 Q 500 270 1000 280 L 1000 300 L 0 300 Z" fill="currentColor" opacity="0.9" />
+
+          {/* Left Side: Modern A-Frame Cabin */}
+          <g transform="translate(50, 0)">
+            {/* Soft Ambient Light Spilling onto ground */}
+            <ellipse cx="180" cy="285" rx="100" ry="10" fill="var(--paper)" opacity="0.15" filter="url(#softGlow)" />
+
+            {/* A-Frame Roof (Outer) */}
+            <polygon points="180,120 70,290 290,290" fill="currentColor" opacity="0.95" />
+            
+            {/* A-Frame Overhang/Inner Shadow */}
+            <polygon points="180,135 100,290 260,290" fill="currentColor" opacity="0.8" />
+            
+            {/* Glowing Main Window (Screen Light) */}
+            <polygon points="180,165 125,290 235,290" fill="var(--paper)" opacity="0.35" filter="url(#glow)" />
+            
+            {/* Window Pane Frames (Mullions) */}
+            <line x1="180" y1="165" x2="180" y2="290" stroke="currentColor" strokeWidth="4" opacity="0.9" />
+            <line x1="150" y1="230" x2="210" y2="230" stroke="currentColor" strokeWidth="4" opacity="0.9" />
+            <line x1="135" y1="260" x2="225" y2="260" stroke="currentColor" strokeWidth="4" opacity="0.9" />
+            
+            {/* Person working at screen (Silhouette inside window) */}
+            <circle cx="165" cy="270" r="10" fill="currentColor" opacity="0.95" />
+            <path d="M 150 290 Q 165 275 180 290 Z" fill="currentColor" opacity="0.95" />
+            {/* Laptop/Monitor silhouette */}
+            <rect x="185" y="275" width="15" height="15" rx="1" fill="currentColor" opacity="0.95" />
+            {/* Bright screen glow localized on face */}
+            <circle cx="178" cy="275" r="15" fill="var(--paper)" opacity="0.2" filter="url(#glow)" />
+
+            {/* Satellite Internet Dish on Roof */}
+            {/* Mount */}
+            <line x1="235" y1="205" x2="255" y2="180" stroke="currentColor" strokeWidth="4" />
+            {/* Dish */}
+            <path d="M 240 178 Q 255 190 265 173" stroke="currentColor" strokeWidth="5" fill="none" strokeLinecap="round" />
+            
+            {/* Digital Signals Emitting */}
+            <path d="M 245 160 Q 255 155 265 160" stroke="var(--paper)" strokeWidth="2" fill="none" opacity="0.2" strokeLinecap="round" />
+            <path d="M 235 145 Q 255 135 275 145" stroke="var(--paper)" strokeWidth="2" fill="none" opacity="0.15" strokeLinecap="round" />
+            <path d="M 225 130 Q 255 115 285 130" stroke="var(--paper)" strokeWidth="2" fill="none" opacity="0.1" strokeLinecap="round" />
+          </g>
+
+          {/* Right Side: Pine Trees in the Wilderness */}
+          <g fill="currentColor" opacity="0.9">
+            {/* Tree 1 */}
+            <g transform="translate(720, 170)">
+              <rect x="18" y="90" width="4" height="20" />
+              <path d="M 20 0 L 0 35 L 10 35 L -10 70 L 10 70 L -20 105 L 60 105 L 30 70 L 50 70 L 30 35 L 40 35 Z" />
+            </g>
+            
+            {/* Tree 2 (Taller) */}
+            <g transform="translate(800, 120) scale(1.3)">
+              <rect x="18" y="90" width="4" height="25" />
+              <path d="M 20 0 L 0 35 L 10 35 L -10 70 L 10 70 L -20 105 L 60 105 L 30 70 L 50 70 L 30 35 L 40 35 Z" />
+            </g>
+            
+            {/* Tree 3 (Smaller, further back) */}
+            <g transform="translate(920, 200) scale(0.8)">
+              <rect x="18" y="90" width="4" height="15" />
+              <path d="M 20 0 L 0 35 L 10 35 L -10 70 L 10 70 L -20 105 L 60 105 L 30 70 L 50 70 L 30 35 L 40 35 Z" opacity="0.8" />
+            </g>
+          </g>
         </svg>
       );
     default:
