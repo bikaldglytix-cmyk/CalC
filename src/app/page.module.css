@@ -67,7 +67,7 @@
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 14px;
 }
 .brand {
@@ -80,8 +80,8 @@
   text-transform: uppercase;
 }
 .brandMark {
-  width: 22px;
-  height: 22px;
+  width: auto;
+  height: 28px;
   flex-shrink: 0;
 }
 .langToggle {
@@ -186,3 +186,73 @@
 @supports (padding: max(0px)) {
   .totalPill { bottom: max(22px, env(safe-area-inset-bottom)); }
 }
+
+.chapterTransition {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(250, 247, 240, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 40;
+  animation: transitionFade 1.5s var(--ease) forwards;
+  border-radius: 16px;
+}
+
+.chapterNum {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.chapterName {
+  font-size: 32px;
+  font-family: var(--font-serif);
+  color: var(--ink-deep);
+  text-align: center;
+  font-weight: 700;
+}
+
+@keyframes transitionFade {
+  0% { opacity: 0; transform: scale(0.95); }
+  20% { opacity: 1; transform: scale(1); }
+  80% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.05); }
+}
+
+.chromeRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.helpCauseBtnGlobal {
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--ink-soft);
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s var(--ease, ease);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: inherit;
+}
+.helpCauseBtnGlobal:hover {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+

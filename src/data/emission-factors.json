@@ -2,16 +2,33 @@
   "questions": {
     "A1": {
       "options": {
+        "concrete": { "id": "concrete", "value": 790 },
+        "traditional": { "id": "traditional", "value": 475 },
+        "dontknow": { "id": "dontknow", "value": 790 }
+      }
+    },
+    "A2": {
+      "isMultiplierFor": "A1",
+      "options": {
+        "actual": { "id": "actual", "multiplier": 1.0 }, 
+        "national_avg": { "id": "national_avg", "multiplier": 1.0 },
+        "rooms_1": { "id": "rooms_1", "multiplier": 0.2083 },
+        "rooms_3": { "id": "rooms_3", "multiplier": 0.625 },
+        "rooms_5": { "id": "rooms_5", "multiplier": 1.042 }
+      }
+    },
+    "A3": {
+      "options": {
         "firewood": { "id": "firewood", "isRegionDependent": true, "values": { "urban": 0, "semi_urban": 450, "rural_hills_terai": 1000, "rural_highland_mountain": 1450 } },
         "lpg": { "id": "lpg", "value": 2400 },
         "biogas": { "id": "biogas", "value": 50 },
         "induction": { "id": "induction", "value": 20 },
         "kerosene": { "id": "kerosene", "value": 1800 },
-        "mixed": { "id": "mixed", "value": 5000 }
+        "mixed": { "id": "mixed", "value": 1900 }
       }
     },
-    "A2": {
-      "isMultiplierFor": "A1_firewood",
+    "A4": {
+      "isMultiplierFor": "A3_firewood",
       "options": {
         "traditional": { "id": "traditional", "multiplier": 1.0 },
         "improved": { "id": "improved", "multiplier": 0.5 },
@@ -19,7 +36,7 @@
         "lpg_electric": { "id": "lpg_electric", "multiplier": 1.0 }
       }
     },
-    "A3": {
+    "A5": {
       "options": {
         "0": { "id": "0", "value": 0 },
         "0_5": { "id": "0_5", "value": 255 },
@@ -28,7 +45,7 @@
         "3plus": { "id": "3plus", "value": 1527 }
       }
     },
-    "A4": {
+    "A6": {
       "options": {
         "never": { "id": "never", "value": 0 },
         "occasionally": { "id": "occasionally", "value": 100 },
@@ -36,7 +53,7 @@
         "frequently": { "id": "frequently", "value": 1200 }
       }
     },
-    "A5": {
+    "A7": {
       "options": {
         "under2": { "id": "under2", "value": 5 },
         "2to6": { "id": "2to6", "value": 15 },
@@ -44,7 +61,7 @@
         "12plus": { "id": "12plus", "value": 50 }
       }
     },
-    "A6": {
+    "A8": {
       "isRegionDependent": true,
       "options": {
         "none": { "id": "none", "values": { "terai": 0, "hilly": 0, "mountain": 0 } },

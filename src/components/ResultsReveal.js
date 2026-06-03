@@ -1,9 +1,12 @@
 "use client";
 import { useState } from 'react';
 import styles from './ResultsReveal.module.css';
+import DetailedReport from './DetailedReport';
 
 export default function ResultsReveal({ open, close, total, parts, userName, userLoc }) {
   const [showPledge, setShowPledge] = useState(false);
+  const [showPremium, setShowPremium] = useState(false);
+  const [hasPaid, setHasPaid] = useState(false);
 
   if (!open) return null;
 
@@ -34,6 +37,8 @@ export default function ResultsReveal({ open, close, total, parts, userName, use
 
   const handleClose = () => {
     setShowPledge(false);
+    setShowPremium(false);
+    setHasPaid(false);
     close();
   };
 
@@ -46,7 +51,9 @@ export default function ResultsReveal({ open, close, total, parts, userName, use
         </button>
         
         <div className={styles.postcard}>
-          {!showPledge ? (
+          {hasPaid ? (
+             <DetailedReport total={total} parts={parts} userName={userName} userLoc={userLoc} />
+          ) : !showPledge ? (
              <div className={styles.summaryView}>
                 <div className={styles.pcHeader}>
                   <span className="lang-en">Your Footprint Summary</span>
@@ -88,6 +95,10 @@ export default function ResultsReveal({ open, close, total, parts, userName, use
                 <button className={styles.pledgeBtn} onClick={() => setShowPledge(true)}>
                   <span className="lang-en">Take the Pledge</span>
                   <span className="lang-np">प्रतिज्ञा गर्नुहोस्</span>
+                </button>
+                <button className={styles.premiumBtn} onClick={() => setShowPremium(true)}>
+                  <span className="lang-en">View Detailed Report</span>
+                  <span className="lang-np">विस्तृत रिपोर्ट हेर्नुहोस्</span>
                 </button>
              </div>
           ) : (
@@ -133,15 +144,43 @@ export default function ResultsReveal({ open, close, total, parts, userName, use
                   <div className={styles.signDate}>{new Date().toLocaleDateString()}</div>
                 </div>
 
-                <div className={styles.shareRow}>
-                  <button className={styles.shareBtn} onClick={handleShare}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
-                    <span className="lang-en">Share Pledge</span>
-                    <span className="lang-np">सेयर गर्नुहोस्</span>
+                 <div className={styles.shareRow}>
+                   <button className={styles.shareBtn} onClick={handleShare}>
+                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                     <span className="lang-en">Share Pledge</span>
+                     <span className="lang-np">सेयर गर्नुहोस्</span>
+                   </button>
+                 </div>
+              </div>
+           )}
+           
+           {showPremium && !hasPaid && (
+              <div className={styles.premiumModal}>
+                <div className={styles.premiumBackdrop} onClick={() => setShowPremium(false)}></div>
+                <div className={styles.premiumContent}>
+                  <button className={styles.closeBtnDark} onClick={() => setShowPremium(false)}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
                   </button>
+                  <h3>Unlock Your Detailed Footprint Report</h3>
+                  <ul className={styles.premiumBenefits}>
+                    <li>✨ Complete granular analysis of your emissions within 24 hours.</li>
+                    <li>🌱 Actionable, personalized ways to minimize your impact.</li>
+                    <li>🤝 Become a member of the ATL Community.</li>
+                    <li>🎫 Get priority access and early updates for all our events.</li>
+                  </ul>
+                  <div className={styles.priceBox}>
+                    <span className={styles.priceAmount}>Rs 200</span>
+                    <span className={styles.priceDesc}>One-time support</span>
+                  </div>
+                  <div className={styles.esewaBox}>
+                     <img src="https://esewa.com.np/common/images/esewa-logo.png" alt="eSewa" className={styles.esewaLogo} />
+                     <button className={styles.esewaBtn} onClick={() => setHasPaid(true)}>
+                       Pay with eSewa
+                     </button>
+                  </div>
                 </div>
-             </div>
-          )}
+              </div>
+           )}
         </div>
 
         <div className={styles.prayerFlags}>

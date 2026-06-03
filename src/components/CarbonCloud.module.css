@@ -1,0 +1,116 @@
+.cloudWrapper {
+  position: absolute;
+  top: 120px; /* Below the header */
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 50;
+  pointer-events: none; /* Let clicks pass through if it overlaps anything */
+}
+
+/* Float animation for the cloud */
+.cloudContainer {
+  position: relative;
+  width: 100px;
+  height: 60px;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: hover 4s ease-in-out infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));
+}
+
+.cloudContainer.bounce {
+  animation: bounceImpact 0.5s ease-out;
+}
+
+.cloudSvg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Lightning bolt */
+.lightning {
+  position: absolute;
+  bottom: -20px;
+  width: 24px;
+  height: 24px;
+  z-index: -1;
+  animation: strike 3s infinite;
+  filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8));
+}
+
+/* Warning Banner */
+.warningBanner {
+  background: #ff3333;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 12px;
+  margin-bottom: 15px; /* Push the cloud down */
+  white-space: nowrap;
+  animation: slideDown 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Metric Pill underneath the cloud */
+.metricPill {
+  margin-top: 10px;
+  background: rgba(255,255,255,0.9);
+  border: 2px solid #ccc;
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  transition: all 0.5s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.metricStormy {
+  background: #444;
+  border-color: #ff3333;
+  color: white;
+}
+
+.number {
+  font-size: 1.1rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.unit {
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+/* Animations */
+@keyframes hover {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes bounceImpact {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+@keyframes strike {
+  0%, 90% { opacity: 0; transform: translateY(-10px); }
+  92% { opacity: 1; transform: translateY(0); }
+  94% { opacity: 0; }
+  96% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

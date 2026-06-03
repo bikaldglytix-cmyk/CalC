@@ -2,11 +2,12 @@ import efData from '../data/emission-factors.json';
 
 /*
  * CRITICAL SCORING RULES:
- * 1. A1 firewood is region-dependent (GQ2) and COOKING-ONLY.
- * 2. A2 stove type is a MULTIPLIER on A1's firewood value, not a standalone add.
- * 3. A6 heating is region-dependent (GQ1) SEASON TOTALS applied EXACTLY ONCE.
- * 4. B1 "By my own motorbike/car" option must score 0. (Counted in B2)
- * 5. C4 (food source) and D2 (second-hand) are MULTIPLIERS on other questions' base values.
+ * 1. A3 firewood is region-dependent (GQ2) and COOKING-ONLY.
+ * 2. A4 stove type is a MULTIPLIER on A3's firewood value.
+ * 3. A2 home size is a MULTIPLIER on A1's construction material value.
+ * 4. A8 heating is region-dependent (GQ1) SEASON TOTALS applied EXACTLY ONCE.
+ * 5. B1 "By my own motorbike/car" option must score 0. (Counted in B2)
+ * 6. C4 (food source) and D2 (second-hand) are MULTIPLIERS on other questions' base values.
  */
 
 export function calculateFootprint(answers, region) {
@@ -24,26 +25,39 @@ export function calculateFootprint(answers, region) {
     
     if (opt.value !== undefined) return opt.value;
     if (opt.values) {
-       if (q === 'A1') return opt.values[gq2] || 0;
-       if (q === 'A6') return opt.values[gq1] || 0;
+       if (q === 'A3') return opt.values[gq2] || 0;
+       if (q === 'A8') return opt.values[gq1] || 0;
     }
     return 0;
   };
 
   // Domain A
   let a1Val = getRaw('A1', answers.A1);
-  if (answers.A1 === 'firewood') {
-     let a2Mult = 1.0;
-     if (answers.A2 && efData.questions.A2.options[answers.A2]) {
-         a2Mult = efData.questions.A2.options[answers.A2].multiplier;
-     }
-     a1Val *= a2Mult;
+  let a2Mult = 1.0;
+  if (answers.A2 === 'actual' && answers.A2_value !== undefined) {
+      a2Mult = answers.A2_value / 55.3;
+  } else if (answers.A2 === 'custom_rooms' && answers.A2_value !== undefined) {
+      a2Mult = answers.A2_value / 4.8;
+  } else if (answers.A2 && efData.questions.A2.options[answers.A2]) {
+      a2Mult = efData.questions.A2.options[answers.A2].multiplier;
   }
+  a1Val *= a2Mult;
   byDomain.A += a1Val;
-  byDomain.A += getRaw('A3', answers.A3);
-  byDomain.A += getRaw('A4', answers.A4);
+
+  let a3Val = getRaw('A3', answers.A3);
+  if (answers.A3 === 'firewood') {
+     let a4Mult = 1.0;
+     if (answers.A4 && efData.questions.A4.options[answers.A4]) {
+         a4Mult = efData.questions.A4.options[answers.A4].multiplier;
+     }
+     a3Val *= a4Mult;
+  }
+  byDomain.A += a3Val;
+
   byDomain.A += getRaw('A5', answers.A5);
   byDomain.A += getRaw('A6', answers.A6);
+  byDomain.A += getRaw('A7', answers.A7);
+  byDomain.A += getRaw('A8', answers.A8);
 
   // Domain B
   byDomain.B += getRaw('B1', answers.B1);
