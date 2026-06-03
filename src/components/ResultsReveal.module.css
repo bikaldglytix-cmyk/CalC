@@ -472,3 +472,24 @@ html[data-lang="np"] .flag { font-family: var(--font-deva-sans); font-weight: 60
   width: 16px;
   height: 16px;
 }
+
+@media (max-width: 768px) {
+  .overlay {
+    padding: 12px;
+  }
+  .postcard {
+    padding: 20px 16px;
+  }
+  .bigTotal {
+    font-size: 36px;
+  }
+  .pledgeText {
+    font-size: 14px;
+  }
+  .signName {
+    font-size: 22px;
+  }
+  .premiumContent {
+    padding: 24px 16px;
+  }
+}

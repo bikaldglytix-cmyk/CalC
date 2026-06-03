@@ -255,3 +255,33 @@ html[data-lang="np"] .sectionTitle { font-family: var(--font-deva-serif); }
 }
 .cta:hover { background: var(--teal-deep); transform: translateY(-1px); }
 .cta svg { width: 16px; height: 16px; }
+
+@media (max-width: 768px) {
+  .formMain {
+    padding: 8px 12px 120px;
+  }
+  .section {
+    padding: 16px 16px 20px;
+  }
+  .sectionTitle {
+    font-size: 18px;
+  }
+  .segmented {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .stepperRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .hint {
+    text-align: left;
+  }
+  .ctaRow {
+    margin: 24px 0 0;
+  }
+  .cta {
+    width: 100%;
+    justify-content: center;
+  }
+}
